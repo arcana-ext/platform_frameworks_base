@@ -154,6 +154,7 @@ public class QuickStatusBarHeader extends FrameLayout implements TunerService.Tu
         mDateView = findViewById(R.id.date);
         mDateView.setOnClickListener(this);
         mClockDateView = findViewById(R.id.date_clock);
+        mClockDateView.setOnClickListener(this);
         mSecurityHeaderView = findViewById(R.id.header_text_container);
         mClockIconsSeparator = findViewById(R.id.separator);
         mRightLayout = findViewById(R.id.rightLayout);
@@ -242,7 +243,7 @@ public class QuickStatusBarHeader extends FrameLayout implements TunerService.Tu
         if (v == mClockView) {
             mActivityStarter.postStartActivityDismissingKeyguard(new Intent(
                     AlarmClock.ACTION_SHOW_ALARMS), 0);
-        } else if (v == mDateView) {
+        } else if (v == mDateView || (v == mClockView && !mExpanded || v == mClockDateView)) {
             Uri.Builder builder = CalendarContract.CONTENT_URI.buildUpon();
             builder.appendPath("time");
             builder.appendPath(Long.toString(System.currentTimeMillis()));
@@ -256,7 +257,7 @@ public class QuickStatusBarHeader extends FrameLayout implements TunerService.Tu
 
     @Override
     public boolean onLongClick(View v) {
-        if (v == mClockView || v == mDateView) {
+        if (v == mClockView || v == mDateView || v == mClockDateView) {
             Intent nIntent = new Intent(Intent.ACTION_MAIN);
             nIntent.setClassName("com.android.settings",
                     "com.android.settings.Settings$DateTimeSettingsActivity");
