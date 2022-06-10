@@ -56,7 +56,6 @@ public class QuickQSPanelController extends QSPanelControllerBase<QuickQSPanel> 
     private final FooterActionsController mFooterActionsController;
     private final TunerService mTunerService;
     private final BrightnessSliderController mBrightnessSliderController;
-    private BrightnessMirrorController mBrightnessMirrorController;
 
     @Inject
     QuickQSPanelController(QuickQSPanel view, QSTileHost qsTileHost,
@@ -72,13 +71,6 @@ public class QuickQSPanelController extends QSPanelControllerBase<QuickQSPanel> 
                 uiEventLogger, qsLogger, dumpManager);
         mTunerService = tunerService;
         mFooterActionsController = footerActionsController;
- 
-        mBrightnessSliderController = brightnessSliderFactory.create(getContext(), mView);
-        mView.setBrightnessView(mBrightnessSliderController.getRootView());
- 
-        mBrightnessController = brightnessControllerFactory.create(
-                mBrightnessSliderController.getIconView(), mBrightnessSliderController);
-        mBrightnessMirrorHandler = new BrightnessMirrorHandler(mBrightnessController);
     }
 
     @Override
@@ -88,7 +80,6 @@ public class QuickQSPanelController extends QSPanelControllerBase<QuickQSPanel> 
         mMediaHost.setShowsOnlyActiveMedia(true);
         mMediaHost.init(MediaHierarchyManager.LOCATION_QQS);
         mFooterActionsController.init();
-        mFooterActionsController.refreshVisibility(mShouldUseSplitNotificationShade);
         mBrightnessSliderController.init();
     }
 
