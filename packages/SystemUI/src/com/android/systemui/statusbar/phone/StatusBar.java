@@ -289,10 +289,6 @@ public class StatusBar extends SystemUI implements
 
     private static final String NAVIGATION_BAR_SHOW =
             "customsystem:" + Settings.System.NAVIGATION_BAR_SHOW;
-    private static final String GAMING_MODE_ACTIVE =
-            "system:" + Settings.System.GAMING_MODE_ACTIVE;
-    private static final String GAMING_MODE_DISABLE_NOTIFICATION_ALERT =
-            "system:" + Settings.System.GAMING_MODE_DISABLE_NOTIFICATION_ALERT;
     private static final String PULSE_ON_NEW_TRACKS =
             Settings.Secure.PULSE_ON_NEW_TRACKS;
     private static final String NOTIFICATION_MATERIAL_DISMISS =
@@ -998,8 +994,6 @@ public class StatusBar extends SystemUI implements
                 SysuiStatusBarStateController.RANK_STATUS_BAR);
 
         mTunerService.addTunable(this, NAVIGATION_BAR_SHOW);
-        mTunerService.addTunable(this, GAMING_MODE_ACTIVE);
-        mTunerService.addTunable(this, GAMING_MODE_DISABLE_NOTIFICATION_ALERT);
         mTunerService.addTunable(this, PULSE_ON_NEW_TRACKS);
         mTunerService.addTunable(this, NOTIFICATION_MATERIAL_DISMISS);
         mTunerService.addTunable(this, NOTIFICATION_MATERIAL_DISMISS_STYLE);
@@ -4457,7 +4451,7 @@ public class StatusBar extends SystemUI implements
         return navigationBarModeOverlay;
     }
 
-   @Override
+    @Override
     public void onTuningChanged(String key, String newValue) {
         switch (key) {
             case NAVIGATION_BAR_SHOW:
@@ -4475,20 +4469,6 @@ public class StatusBar extends SystemUI implements
                     if (hasNavbar) {
                         mNavigationBarController.onDisplayRemoved(mDisplayId);
                     }
-                }
-                break;
-            case GAMING_MODE_ACTIVE:
-                boolean gamingModeActive =
-                        TunerService.parseIntegerSwitch(newValue, false);
-                if (mPresenter != null) {
-                    mPresenter.setGamingModeActive(gamingModeActive);
-                }
-                break;
-            case GAMING_MODE_DISABLE_NOTIFICATION_ALERT:
-                boolean gamingModeNoAlert =
-                        TunerService.parseIntegerSwitch(newValue, true);
-                if (mPresenter != null) {
-                    mPresenter.setGamingModeNoAlert(gamingModeNoAlert);
                 }
                 break;
             case PULSE_ON_NEW_TRACKS:
