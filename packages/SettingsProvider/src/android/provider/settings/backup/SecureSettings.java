@@ -202,5 +202,6 @@ public class SecureSettings {
         Settings.Secure.MONET_ENGINE_WHITE_LUMINANCE,
         Settings.Secure.TETHERING_ALLOW_VPN_UPSTREAMS,
         Settings.Secure.SECURE_LOCKSCREEN_QS_DISABLED,
+        Settings.Secure.STATUS_BAR_SHOW_VIBRATE_ICON
     };
 }
