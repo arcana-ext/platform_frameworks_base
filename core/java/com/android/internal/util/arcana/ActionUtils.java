@@ -253,18 +253,6 @@ public final class ActionUtils {
         }
     }
 
-    // Toggle qs panel
-    public static void toggleQsPanel() {
-        IStatusBarService service = getStatusBarService();
-        if (service != null) {
-            try {
-                service.toggleSettingsPanel();
-            } catch (RemoteException e) {
-                // do nothing.
-            }
-        }
-    }
-
     // Cycle ringer modes
     public static void toggleRingerModes (Context context) {
         AudioManager am = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
