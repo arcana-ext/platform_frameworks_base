@@ -986,16 +986,13 @@ public class EdgeBackGestureHandler extends CurrentUserTracker
             case 9: // Notification panel
                 ActionUtils.toggleNotifications();
                 break;
-            case 10: // QS panel
-                ActionUtils.toggleQsPanel();
-                break;
-            case 11: // Clear notifications
+            case 10: // Clear notifications
                 ActionUtils.clearAllNotifications();
                 break;
-            case 12: // Ringer modes
+            case 11: // Ringer modes
                 ActionUtils.toggleRingerModes(mContext);
                 break;
-            case 13: // Kill app
+            case 12: // Kill app
                 ArcanaUtils.killForegroundApp();
                 break;
         }
