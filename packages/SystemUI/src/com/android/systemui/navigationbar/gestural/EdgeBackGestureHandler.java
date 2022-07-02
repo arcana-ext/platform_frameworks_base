@@ -44,6 +44,7 @@ import android.os.Vibrator;
 import android.os.VibrationEffect;
 import android.provider.DeviceConfig;
 import android.util.DisplayMetrics;
+import android.os.UserHandle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.util.TypedValue;
