@@ -992,9 +992,6 @@ public class EdgeBackGestureHandler extends CurrentUserTracker
             case 11: // Ringer modes
                 ActionUtils.toggleRingerModes(mContext);
                 break;
-            case 12: // Kill app
-                ArcanaUtils.killForegroundApp();
-                break;
         }
     }
 
